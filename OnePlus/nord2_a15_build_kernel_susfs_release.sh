@@ -13,25 +13,23 @@ fi
 
 # Create the root folder with the current date and time (AM/PM)
 cd ./builds
-ROOT_DIR="Nord4-A15-$(date +'%Y-%m-%d-%I-%M-%p')-release"
+ROOT_DIR="Nord2-A15-Kinglsayer-$(date +'%Y-%m-%d-%I-%M-%p')-release"
 echo "Creating root folder $ROOT_DIR..."
 mkdir -p "$ROOT_DIR"
 cd "$ROOT_DIR"
 
 # Clone the repositories into the root folder
 echo "Cloning repositories..."
-git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-6.1
+git clone https://github.com/Kingslayer9988/AnyKernel3.git -b android14-6.1
 git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
 git clone https://github.com/TheWildJames/kernel_patches.git
 
 # Get the kernel
 echo "Get the kernel..."
-mkdir nord4
-cd ./nord4
-repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b oneplus/sm7675 -m oneplus_nord_4_v.xml
-repo sync -j$(nproc)
-
-rm -rf ./kernel_platform/common/android/abi_gki_protected_exports_*
+mkdir nord2
+git clone https://github.com/mt6893-development/android_kernel_oplus_mt6893.git -b lineage-22.1 nord2
+cd nord2
+git checkout
 
 # Add KernelSU
 echo "adding ksu"
